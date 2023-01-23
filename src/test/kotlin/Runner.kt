@@ -15,11 +15,17 @@ import org.junit.runner.RunWith
         "src/main/resources/features"
     ],
     glue = [
-        "stepDefinition"
+        "stepDefinition", "hooks"
     ],
     tags = [
         "@all"
     ]
 )
 class Runner {
+//    companion object{
+//        @AfterClass
+//        fun tearDown() {
+//            SeleniumDSL.quitDriver()
+//        }
+//    }
 }

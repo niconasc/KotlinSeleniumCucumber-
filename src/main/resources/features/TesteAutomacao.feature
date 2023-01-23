@@ -10,3 +10,10 @@ Funcionalidade: Validar página de teste da automação
     Dado que eu esteja com o navegador aberto
     Quando eu acessar o site de teste
     Então devo visualizar o título Automation Testing Practice
+
+  @drag-and-drop
+  Cenário: Validar elemento sendo arrastado
+    Dado que eu esteja com o navegador aberto
+    Quando eu acessar o site de teste
+    E arrastar o elemento drag para o drop
+    Então devo visualizar os elementos sobrepostos
