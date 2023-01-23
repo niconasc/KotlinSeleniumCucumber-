@@ -72,7 +72,7 @@ object SeleniumDSL {
     }
 
     fun dragAndDrop(draggable: WebElement, droppable: WebElement) {
-        Actions(driver).also { 7
+        Actions(driver).also {
             it.dragAndDrop(draggable, droppable).build().perform()
         }
     }
