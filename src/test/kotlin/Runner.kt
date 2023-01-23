@@ -22,10 +22,4 @@ import org.junit.runner.RunWith
     ]
 )
 class Runner {
-//    companion object{
-//        @AfterClass
-//        fun tearDown() {
-//            SeleniumDSL.quitDriver()
-//        }
-//    }
 }
