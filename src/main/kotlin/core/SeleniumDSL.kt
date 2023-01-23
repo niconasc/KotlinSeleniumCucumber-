@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.edge.EdgeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.support.ui.Select
 import utils.Utils
 import java.time.Duration
 
@@ -40,6 +41,7 @@ object SeleniumDSL {
                 WebDriverManager.getInstance(DriverManagerType.CHROME).setup()
                 ChromeDriver(options)
             }
+
             else -> {
                 WebDriverManager.getInstance(DriverManagerType.CHROME).setup()
                 ChromeDriver()
@@ -75,6 +77,18 @@ object SeleniumDSL {
         Actions(driver).also {
             it.dragAndDrop(draggable, droppable).build().perform()
         }
+    }
+
+    fun selectByVisibleText(el: WebElement, text: String) {
+        Select(el).also {
+            it.selectByVisibleText(text)
+        }
+    }
+    fun acceptPopUp() {
+        driver.switchTo().alert().accept()
+    }
+    fun dismissPopUp() {
+        driver.switchTo().alert().dismiss()
     }
 
     fun quitDriver() {

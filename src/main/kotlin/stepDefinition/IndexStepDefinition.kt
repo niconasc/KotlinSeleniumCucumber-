@@ -1,6 +1,7 @@
 package stepDefinition
 
 import core.SeleniumDSL
+import io.cucumber.java.PendingException
 import io.cucumber.java.pt.Dado
 import io.cucumber.java.pt.Então
 import io.cucumber.java.pt.Quando
@@ -34,5 +35,19 @@ class IndexStepDefinition {
     @Então("devo visualizar os elementos sobrepostos")
     fun devo_visualizar_os_elementos_sobrepostos() {
         indexPageObject.dragAndDropisOk()
+    }
+
+    @Dado("clicar no botão Alert click me")
+    fun clicar_no_botão_Alert_click_me() {
+        indexPageObject.clickAlert()
+    }
+
+    @Então("devo visualizar o pop-up e aceit-alo")
+    fun devo_visualizar_o_pop_up_e_aceit_alo() {
+        indexPageObject.isAlertOk()
+    }
+    @Então("devo visualizar o pop-up e recusá-lo")
+    fun devo_visualizar_o_pop_up_e_recusa_lo() {
+        indexPageObject.isAlertCanceled()
     }
 }
