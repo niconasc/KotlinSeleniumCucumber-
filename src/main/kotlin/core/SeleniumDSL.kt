@@ -1,7 +1,5 @@
 package core
 
-import browserEnum.Browser
-import browserEnum.Browser.*
 import io.github.bonigarcia.wdm.WebDriverManager
 import io.github.bonigarcia.wdm.config.DriverManagerType
 import org.openqa.selenium.WebDriver
@@ -12,33 +10,37 @@ import org.openqa.selenium.firefox.FirefoxDriver
 import utils.Utils
 import java.time.Duration
 
-open class SeleniumDSL {
+object SeleniumDSL {
     lateinit var driver: WebDriver
     private val defaultUrlTest = "https://testautomationpractice.blogspot.com/"
 
-    fun startBrowser(browser: Browser, url: String? = null) {
+    fun startBrowser(browser: String, url: String? = null) {
         driver = when (browser) {
-            CHROME -> {
+            "CHROME" -> {
                 WebDriverManager.getInstance(DriverManagerType.CHROME).setup()
                 ChromeDriver()
             }
 
-            FIREFOX -> {
+            "FIREFOX" -> {
                 WebDriverManager.getInstance(DriverManagerType.FIREFOX).setup()
                 FirefoxDriver()
             }
 
-            EDGE -> {
+            "EDGE" -> {
                 WebDriverManager.getInstance(DriverManagerType.EDGE).setup()
                 EdgeDriver()
             }
 
-            HEADLESS -> {
+            "HEADLESS" -> {
                 var options = ChromeOptions().apply {
                     addArguments("--headless")
                 }
                 WebDriverManager.getInstance(DriverManagerType.CHROME).setup()
                 ChromeDriver(options)
+            }
+            else -> {
+                WebDriverManager.getInstance(DriverManagerType.CHROME).setup()
+                ChromeDriver()
             }
         }
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10))
@@ -55,7 +57,7 @@ open class SeleniumDSL {
     }
 
     fun waitToPageLoad() {
-        while (Utils.executeJsCommand("return document.readyStat", driver) != "complete") {
+        while (Utils.executeJsCommand("return document.readyState", driver) != "complete") {
             println(
                 "Aguardando página carregar, status atual ${
                     Utils.executeJsCommand(
@@ -65,5 +67,9 @@ open class SeleniumDSL {
                 }"
             )
         }
+    }
+
+    fun quitDriver() {
+        driver.quit()
     }
 }
