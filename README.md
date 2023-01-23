@@ -1,4 +1,4 @@
-# Kotlin Selenium Cucumbet - Automação de Testes [ Web ]
+# Kotlin Selenium Cucumber - Automação de Testes[ Web ]
 
 Este projeto tem como objetivo automatizar os testes **Web** utilizando Kotlin + Selenium (webdrivermanager) + Cucumber
 
